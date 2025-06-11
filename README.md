@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>نشریه الکترونیک روزنه بصیرت</title>
+  <link href="https://cdn.jsdelivr.net/npm/iransans-web-font@1.0.0/iransans.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    body {
+      font-family: 'IRANSans', sans-serif;
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
+      overscroll-behavior: none;
+      position: relative;
+    }
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.postimg.cc/zB01q8Tf/Untitled-12.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: -1;
+    }
+    .title-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #ffffff;
+      position: relative;
+    }
+    .title-section h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #084842;
+      margin-bottom: 0.5rem;
+    }
+    .title-section p {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #E0E0E0;
+      margin-bottom: 2rem;
+    }
+    .audio-banner {
+      background-color: rgba(8, 72, 66, 0.7);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    .audio-banner:hover {
+      background-color: rgba(8, 72, 66, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+    .image-container {
+      width: 100%;
+      max-width: 595px;
+      aspect-ratio: 1 / 1.414;
+      position: relative;
+      margin: 0 auto;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    }
+    #image-stack, #image-stack-19 {
+      border-radius: 8px;
+    }
+    .image-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .layer {
+      opacity: 0;
+    }
+    .end-notice {
+      text-align: center;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+      .title-section h1 {
+        font-size: 2rem;
+      }
+      .title-section p {
+        font-size: 1rem;
+      }
+      .image-container {
+        max-width: 90%;
+      }
+      .end-notice {
+        max-width: 90%;
+        padding: 1.5rem;
+      }
+      .iframe-container {
+        max-width: 90%;
+      }
+      .iframe-container iframe {
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- لایه پس‌زمینه -->
+  <div class="background-overlay"></div>
+
+  <!-- تیتر و زیرتیتر -->
+  <div class="title-section">
+    <h1 id="main-title">نشریه الکترونیک روزنه بصیرت</h1>
+    <p id="sub-title">تهیه شده توسط واحد رسانه بسیج دانشجویی دانشگاه ولی عصر (عج)</p>
+    <a href="#audio-section" class="audio-banner">🎧 گوش دادن به نسخه صوتی نشریه</a>
+  </div>
+
+  <!-- بخش اصلی -->
+  <main class="container mx-auto px-4 py-8">
+    <!-- بخش پخش کننده صوتی -->
+    <div id="audio-section" class="iframe-container" style="margin: 2rem auto; max-width: 640px;">
+      <iframe src="https://drive.google.com/file/d/1OKnOx9Bk28waq4MGHsQqwa_Q6n-Qroq-/preview" 
+              width="100%" 
+              height="120" 
+              frameborder="0" 
+              allow="autoplay"
+              style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"></iframe>
+    </div>
+
+    <!-- کانتینر تصاویر اول -->
+    <div class="image-container" id="image-stack">
+      <img class="image-layer" id="image1" src="https://i.postimg.cc/mkn9Mhyq/Untitled-12.png" alt="تصویر اول">
+      <img class="image-layer layer" id="image2" src="https://i.postimg.cc/T3NP3BQ7/Untitled-1323.png" alt="تصویر دوم">
+      <a href="https://postimg.cc/LgSVZGG3" target="_blank"><img class="image-layer layer" id="image3" src="https://i.postimg.cc/d3kNgYBp/23423423.png" border="0" alt="23423423"></a>
+    </div>
+
+    <!-- کانتینر تصاویر دوم -->
+    <div class="image-container" id="image-stack-2">
+      <a href="https://postimg.cc/jC6pkTqK" target="_blank"><img class="image-layer" id="image4" src="https://i.postimg.cc/BZRJbZd8/Untitled-13.png" border="0" alt="Untitled-13"></a>
+      <a href="https://postimg.cc/Lhvy186q" target="_blank"><img class="image-layer layer" id="image5" src="https://i.postimg.cc/7Yrjj5FN/2.png" border="0" alt="2"></a>
+    </div>
+
+    <!-- کانتینر تصاویر سوم -->
+    <div class="image-container" id="image-stack-3">
+      <a href="https://postimg.cc/jC6pkTqK" target="_blank"><img class="image-layer" id="image6" src="https://i.postimg.cc/BZRJbZd8/Untitled-13.png" border="0" alt="Untitled-13"></a>
+      <a href="https://postimg.cc/KkxN1d6r" target="_blank"><img class="image-layer layer" id="image7" src="https://i.postimg.cc/Hx7Phm3K/3.png" border="0" alt="3"></a>
+    </div>
+
+    <!-- کانتینر تصاویر چهارم -->
+    <div class="image-container" id="image-stack-4">
+      <a href="https://postimg.cc/Lgz2xgCM" target="_blank"><img class="image-layer" id="image8" src="https://i.postimg.cc/cCzC4Qf6/Untitled-1464356.png" border="0" alt="Untitled-1464356"></a>
+      <a href="https://postimg.cc/MvSWvtHZ" target="_blank"><img class="image-layer layer" id="image9" src="https://i.postimg.cc/fT3kqrhd/4.png" border="0" alt="4"></a>
+    </div>
+
+    <!-- کانتینر تصاویر پنجم -->
+    <div class="image-container" id="image-stack-5">
+      <a href="https://postimg.cc/bZvft5hP" target="_blank"><img class="image-layer" id="image10" src="https://i.postimg.cc/9Qdmv3gD/07687.png" border="0" alt="07687"></a>
+      <a href="https://postimg.cc/nCpJHzSC" target="_blank"><img class="image-layer layer" id="image11" src="https://i.postimg.cc/4NhNQHzb/5.png" border="0" alt="5"></a>
+    </div>
+
+    <!-- کانتینر تصاویر ششم -->
+    <div class="image-container" id="image-stack-6">
+      <a href="https://postimg.cc/G9JpP6ZT" target="_blank"><img class="image-layer" id="image12" src="https://i.postimg.cc/bY42Phgg/6.png" border="0" alt="6"></a>
+      <a href="https://postimg.cc/QHYh0DSC" target="_blank"><img class="image-layer layer" id="image13" src="https://i.postimg.cc/K8xjcvMP/Untitled-334234234.png" border="0" alt="Untitled-334234234"></a>
+    </div>
+
+    <!-- کانتینر تصاویر هفتم -->
+    <div class="image-container" id="image-stack-7">
+      <a href="https://postimg.cc/RWn5dHNp" target="_blank"><img class="image-layer" id="image14" src="https://i.postimg.cc/kgTJnN9C/7.png" border="0" alt="7"></a>
+      <a href="https://postimg.cc/s1nkRcW0" target="_blank"><img class="image-layer layer" id="image15" src="https://i.postimg.cc/m2RBCpgR/3453454.png" border="0" alt="3453454"></a>
+    </div>
+
+    <!-- کانتینر تصاویر هشتم -->
+    <div class="image-container" id="image-stack-8">
+      <a href="https://postimg.cc/v1LK2LMh" target="_blank"><img class="image-layer" id="image16" src="https://i.postimg.cc/9fvjMJn6/Untitled-34634563.png" border="0" alt="Untitled-34634563"></a>
+      <a href="https://postimg.cc/0MkBTMys" target="_blank"><img class="image-layer layer" id="image17" src="https://i.postimg.cc/tTWGVF0Y/8.png" border="0" alt="8"></a>
+    </div>
+
+    <!-- کانتینر تصاویر نهم -->
+    <div class="image-container" id="image-stack-9">
+      <a href="https://postimg.cc/D4mYz9Gp" target="_blank"><img class="image-layer" id="image18" src="https://i.postimg.cc/fyv48ZRs/9.png" border="0" alt="9"></a>
+    </div>
+
+    <!-- کانتینر تصاویر دهم -->
+    <div class="image-container" id="image-stack-10">
+      <a href="https://postimg.cc/bZ1VdHGP" target="_blank"><img class="image-layer" id="image19" src="https://i.postimg.cc/T34z7tfK/10.png" border="0" alt="10"></a>
+      <a href="https://postimg.cc/QHT0nkJ7" target="_blank"><img class="image-layer layer" id="image20" src="https://i.postimg.cc/yYftxLJL/Untitled-323423423.png" border="0" alt="Untitled-323423423"></a>
+    </div>
+
+    <!-- کانتینر تصاویر یازدهم -->
+    <div class="image-container" id="image-stack-11">
+      <a href="https://postimg.cc/Js3KRrg4" target="_blank"><img class="image-layer" id="image21" src="https://i.postimg.cc/4xq0bnQt/Untitled-32343423.png" border="0" alt="Untitled-32343423"></a>
+      <a href="https://postimg.cc/XGqgKwvp" target="_blank"><img class="image-layer layer" id="image22" src="https://i.postimg.cc/G2JSCKwJ/11.png" border="0" alt="11"></a>
+      <a href="https://postimg.cc/DJ1wMN0D" target="_blank"><img class="image-layer layer" id="image23" src="https://i.postimg.cc/k4pRB3mn/28.png" border="0" alt="28"></a>
+    </div>
+
+    <!-- کانتینر تصاویر دوازدهم -->
+    <div class="image-container" id="image-stack-12">
+      <a href="https://postimg.cc/qgX8tbwj" target="_blank"><img class="image-layer" id="image24" src="https://i.postimg.cc/J7SK2SkV/Untitled-3453453453.png" border="0" alt="Untitled-3453453453"></a>
+      <a href="https://postimg.cc/SJScc6tq" target="_blank"><img class="image-layer layer" id="image25" src="https://i.postimg.cc/5NvpdpBH/12.png" border="0" alt="12"></a>
+    </div>
+
+    <!-- کانتینر تصاویر سیزدهم -->
+    <div class="image-container" id="image-stack-13">
+      <a href="https://postimg.cc/GByDbq9P" target="_blank"><img class="image-layer" id="image26" src="https://i.postimg.cc/438Qb0g0/13.png" border="0" alt="13"></a>
+      <a href="https://postimg.cc/D8SwVmSL" target="_blank"><img class="image-layer layer" id="image27" src="https://i.postimg.cc/nckjDDZR/Untitled-3.png" border="0" alt="Untitled-3"></a>
+      <a href="https://postimg.cc/nMcLk3Zd" target="_blank"><img class="image-layer layer" id="image28" src="https://i.postimg.cc/fWY0MPPh/43534534534-3.png" border="0" alt="43534534534-3"></a>
+      <a href="https://postimg.cc/QKtxdd0L" target="_blank"><img class="image-layer layer" id="image29" src="https://i.postimg.cc/XqKZxZ5v/2342342342.png" border="0" alt="2342342342"></a>
+      <a href="https://postimg.cc/4nLxFpxX" target="_blank"><img class="image-layer layer" id="image30" src="https://i.postimg.cc/02xKjfgK/image.png" border="0" alt="image"></a>
+    </div>
+
+    <!-- کانتینر تصاویر چهاردهم -->
+    <div class="image-container" id="image-stack-14">
+      <a href="https://postimg.cc/zb4PVdkJ" target="_blank"><img class="image-layer" id="image31" src="https://i.postimg.cc/XqvM1mGy/14.png" border="0" alt="14"></a>
+    </div>
+
+    <!-- کانتینر تصاویر پانزدهم -->
+    <div class="image-container" id="image-stack-15">
+      <a href="https://postimg.cc/30pfpgL2" target="_blank"><img class="image-layer" id="image32" src="https://i.postimg.cc/T1Nzz0gN/15.png" border="0" alt="15"></a>
+    </div>
+
+    <!-- کانتینر تصاویر شانزدهم -->
+    <div class="image-container" id="image-stack-16">
+      <a href="https://postimg.cc/0zZWp5CX" target="_blank"><img class="image-layer" id="image33" src="https://i.postimg.cc/ZqzGzCvm/16.png" border="0" alt="16"></a>
+    </div>
+
+    <!-- کانتینر تصاویر هفدهم -->
+    <div class="image-container" id="image-stack-17">
+      <a href="https://postimg.cc/Z9Rfjk7b" target="_blank"><img class="image-layer" id="image34" src="https://i.postimg.cc/Lskr92j1/17.png" border="0" alt="17"></a>
+    </div>
+
+    <!-- کانتینر تصاویر هجدهم -->
+    <div class="image-container" id="image-stack-18">
+      <a href="https://postimg.cc/TpVH3J56" target="_blank"><img class="image-layer" id="image35" src="https://i.postimg.cc/vHkRXPQc/18.png" border="0" alt="18"></a>
+    </div>
+
+    <!-- کانتینر تصاویر نوزدهم -->
+    <div class="image-container" id="image-stack-19">
+      <a href="https://postimg.cc/rDqZ0R5t" target="_blank"><img class="image-layer" id="image36" src="https://i.postimg.cc/DwX9NqZ5/19.png" border="0" alt="19"></a>
+    </div>
+
+    <!-- کادر انتهایی -->
+    <div class="end-notice">
+      <p>تمام حقوق مادی و معنوی این صفحه متعلق به بسیج دانشجویی دانشگاه ولی عصر (عج) می باشد و استفاده از آن با ذکر منبع بلامانع است.</p>
+    </div>
+  </main>
+
+  <!-- فوتر -->
+  <footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 گالری پویا. تمامی حقوق محفوظ است.</p>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(
+      "#main-title",
+      { opacity: 0, y: -50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+      }
+    );
+    gsap.fromTo(
+      "#sub-title",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        delay: 0.5,
+      }
+    );
+    gsap.fromTo(
+      ".audio-banner",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        delay: 1,
+      }
+    );
+
+    gsap.set("#image1", { opacity: 1 });
+    gsap.fromTo(
+      "#image2",
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    gsap.fromTo(
+      "#image3",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image4", { opacity: 1 });
+    gsap.fromTo(
+      "#image5",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-2",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image6", { opacity: 1 });
+    gsap.fromTo(
+      "#image7",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-3",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image8", { opacity: 1 });
+    gsap.fromTo(
+      "#image9",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-4",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image10", { opacity: 1 });
+    gsap.fromTo(
+      "#image11",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-5",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image12", { opacity: 1 });
+    gsap.fromTo(
+      "#image13",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-6",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image14", { opacity: 1 });
+    gsap.fromTo(
+      "#image15",
+      { opacity: 0, x: -50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-7",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image16", { opacity: 1 });
+    gsap.fromTo(
+      "#image17",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-8",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image18", { opacity: 1 });
+
+    gsap.set("#image19", { opacity: 1 });
+    gsap.fromTo(
+      "#image20",
+      { opacity: 0, scale: 1.2, rotation: 5 },
+      {
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        duration: 2,
+        ease: "elastic.out(1, 0.5)",
+        scrollTrigger: {
+          trigger: "#image-stack-10",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image21", { opacity: 1 });
+    gsap.fromTo(
+      "#image22",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-11",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    gsap.fromTo(
+      "#image23",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-11",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image24", { opacity: 1 });
+    gsap.fromTo(
+      "#image25",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-12",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image26", { opacity: 1 });
+    gsap.fromTo(
+      "#image27",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#image-stack-13",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    gsap.fromTo(
+      "#image28",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.out",
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: "#image-stack-13",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    gsap.fromTo(
+      "#image29",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.out",
+        delay: 1,
+        scrollTrigger: {
+          trigger: "#image-stack-13",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    gsap.fromTo(
+      "#image30",
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.out",
+        delay: 1.5,
+        scrollTrigger: {
+          trigger: "#image-stack-13",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.set("#image31", { opacity: 1 });
+    gsap.set("#image32", { opacity: 1 });
+    gsap.set("#image33", { opacity: 1 });
+    gsap.set("#image34", { opacity: 1 });
+    gsap.set("#image35", { opacity: 1 });
+    gsap.set("#image36", { opacity: 1 });
+  </script>
+</body>
+</html>
